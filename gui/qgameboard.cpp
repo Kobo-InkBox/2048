@@ -83,10 +83,10 @@ QGameBoard::QGameBoard(QWidget *parent) :
     connect(downBtn, SIGNAL(clicked()), SLOT(moveDown()));
     connect(quitBtn, SIGNAL(clicked()), SLOT(close()));
 
-    buttonLayout->insertWidget(1, leftBtn, 0, Qt::AlignCenter);
-    buttonLayout->insertWidget(1, rightBtn, 0, Qt::AlignCenter);
-    buttonLayout->insertWidget(1, upBtn, 0, Qt::AlignCenter);
-    buttonLayout->insertWidget(1, downBtn, 0, Qt::AlignCenter);
+    buttonLayout->insertWidget(1, leftBtn, 0);
+    buttonLayout->insertWidget(1, rightBtn, 0);
+    buttonLayout->insertWidget(1, upBtn, 0);
+    buttonLayout->insertWidget(1, downBtn, 0);
     quitLayout->insertWidget(1, quitBtn, 0, Qt::AlignCenter);
     mainLayout->addLayout(buttonLayout, 1);
     mainLayout->addLayout(quitLayout, 2);
