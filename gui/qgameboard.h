@@ -39,8 +39,13 @@ private:
     QGameOverWindow gameOverWindow;
     // winner widget
     QLabel *youwin;
-
     void drawBoard();
+
+private slots:
+    void moveLeft();
+    void moveRight();
+    void moveUp();
+    void moveDown();
 
 protected:
     void keyPressEvent(QKeyEvent *event);

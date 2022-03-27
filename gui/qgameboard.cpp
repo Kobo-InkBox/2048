@@ -12,6 +12,7 @@
 #include <QKeyEvent>
 #include <QVBoxLayout>
 #include <QString>
+#include <QApplication>
 
 #include <QDebug>
 
@@ -51,6 +52,45 @@ QGameBoard::QGameBoard(QWidget *parent) :
     score->setStyleSheet("QLabel { color: rgb(235,224,214); font: 16pt; }");
     score->setFixedHeight(50);
     mainLayout->insertWidget(1, score, 0, Qt::AlignRight);
+
+    QHBoxLayout * buttonLayout = new QHBoxLayout(this);
+    QHBoxLayout * quitLayout = new QHBoxLayout(this);
+    QPushButton * leftBtn = new QPushButton(this);
+    QPushButton * rightBtn = new QPushButton(this);
+    QPushButton * upBtn = new QPushButton(this);
+    QPushButton * downBtn = new QPushButton(this);
+    QPushButton * quitBtn = new QPushButton(this);
+
+    leftBtn->setFont(QFont("Noto Mono"));
+    rightBtn->setFont(QFont("Noto Mono"));
+    upBtn->setFont(QFont("Noto Mono"));
+    downBtn->setFont(QFont("Noto Mono"));
+
+    leftBtn->setStyleSheet("background-color: lightGrey; padding: 30px");
+    rightBtn->setStyleSheet("background-color: lightGrey; padding: 30px");
+    upBtn->setStyleSheet("background-color: lightGrey; padding: 30px");
+    downBtn->setStyleSheet("background-color: lightGrey; padding: 30px");
+    quitBtn->setStyleSheet("padding-left: 40px; padding-right: 40px");
+
+    leftBtn->setText("←");
+    rightBtn->setText("→");
+    upBtn->setText("↑");
+    downBtn->setText("↓");
+    quitBtn->setText("Quit");
+    connect(leftBtn, SIGNAL(clicked()), SLOT(moveLeft()));
+    connect(rightBtn, SIGNAL(clicked()), SLOT(moveRight()));
+    connect(upBtn, SIGNAL(clicked()), SLOT(moveUp()));
+    connect(downBtn, SIGNAL(clicked()), SLOT(moveDown()));
+    connect(quitBtn, SIGNAL(clicked()), SLOT(close()));
+
+    buttonLayout->insertWidget(1, leftBtn, 0, Qt::AlignCenter);
+    buttonLayout->insertWidget(1, rightBtn, 0, Qt::AlignCenter);
+    buttonLayout->insertWidget(1, upBtn, 0, Qt::AlignCenter);
+    buttonLayout->insertWidget(1, downBtn, 0, Qt::AlignCenter);
+    quitLayout->insertWidget(1, quitBtn, 0, Qt::AlignCenter);
+    mainLayout->addLayout(buttonLayout, 1);
+    mainLayout->addLayout(quitLayout, 2);
+
 
     // style sheet of the board
     setStyleSheet("QGameBoard { background-color: rgb(187,173,160) }");
@@ -111,4 +151,20 @@ void QGameBoard::resetGame()
     drawBoard();
     score->setText(QString("SCORE: %1").arg(game->getScore()));
     gameOverWindow.hide();
+}
+
+void QGameBoard::moveLeft() {
+    game->move(LEFT);
+}
+
+void QGameBoard::moveRight() {
+    game->move(RIGHT);
+}
+
+void QGameBoard::moveUp() {
+    game->move(UP);
+}
+
+void QGameBoard::moveDown() {
+    game->move(DOWN);
 }

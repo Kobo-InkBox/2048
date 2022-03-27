@@ -36,3 +36,6 @@ HEADERS  += gui/mainwindow.h \
     gui/qgameoverwindow.h \
     gui/qwinwindow.h
 
+RESOURCES += \
+    resources.qrc
+
