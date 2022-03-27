@@ -51,7 +51,7 @@ QGameBoard::QGameBoard(QWidget *parent) :
     score = new QLabel(QString("SCORE: %1").arg(game->getScore()));
     score->setStyleSheet("QLabel { color: rgb(235,224,214); font: 16pt; }");
     score->setFixedHeight(50);
-    mainLayout->insertWidget(1, score, 0, Qt::AlignRight);
+    mainLayout->insertWidget(1, score, 0, Qt::AlignCenter);
 
     QHBoxLayout * buttonLayout = new QHBoxLayout(this);
     QHBoxLayout * quitLayout = new QHBoxLayout(this);
