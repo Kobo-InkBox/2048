@@ -66,10 +66,10 @@ QGameBoard::QGameBoard(QWidget *parent) :
     upBtn->setFont(QFont("Noto Mono"));
     downBtn->setFont(QFont("Noto Mono"));
 
-    leftBtn->setStyleSheet("background-color: lightGrey; padding: 30px");
-    rightBtn->setStyleSheet("background-color: lightGrey; padding: 30px");
-    upBtn->setStyleSheet("background-color: lightGrey; padding: 30px");
-    downBtn->setStyleSheet("background-color: lightGrey; padding: 30px");
+    leftBtn->setStyleSheet("padding: 30px");
+    rightBtn->setStyleSheet("padding: 30px");
+    upBtn->setStyleSheet("padding: 30px");
+    downBtn->setStyleSheet("padding: 30px");
     quitBtn->setStyleSheet("padding-left: 40px; padding-right: 40px");
 
     leftBtn->setText("←");

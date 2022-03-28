@@ -129,7 +129,7 @@ QPushButton#pushButtonFilterClear
 
 QWidget
 {
-    background-color: grey;
+    background-color: #3b3b3b;
     selection-color: white;
     selection-background-color: black;
     font-size: 10pt;
