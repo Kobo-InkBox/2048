@@ -13,6 +13,7 @@ QGameOverWindow::QGameOverWindow(QWidget *parent) :
     QApplication::setFont(QFont("u001"));
     QVBoxLayout *layout = new QVBoxLayout(this);
     // game over label
+    this->setStyleSheet("background-color: #3b3b3b");
     QLabel* gameover = new QLabel("Game Over!", this);
     gameover->setStyleSheet("QLabel { color: white; font: 40pt; font: bold;} ");
     // reset button
