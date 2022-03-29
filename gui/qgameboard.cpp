@@ -13,6 +13,7 @@
 #include <QVBoxLayout>
 #include <QString>
 #include <QApplication>
+#include <QScreen>
 
 #include <QDebug>
 
@@ -83,10 +84,10 @@ QGameBoard::QGameBoard(QWidget *parent) :
     connect(downBtn, SIGNAL(clicked()), SLOT(moveDown()));
     connect(quitBtn, SIGNAL(clicked()), SLOT(close()));
 
-    buttonLayout->insertWidget(1, leftBtn, 0);
-    buttonLayout->insertWidget(1, rightBtn, 0);
+    buttonLayout->insertWidget(0, leftBtn, 0);
+    buttonLayout->insertWidget(3, rightBtn, 0);
     buttonLayout->insertWidget(1, upBtn, 0);
-    buttonLayout->insertWidget(1, downBtn, 0);
+    buttonLayout->insertWidget(2, downBtn, 0);
     quitLayout->insertWidget(1, quitBtn, 0, Qt::AlignCenter);
     mainLayout->addLayout(buttonLayout, 1);
     mainLayout->addLayout(quitLayout, 2);
@@ -118,13 +119,17 @@ void QGameBoard::keyPressEvent(QKeyEvent *event)
 
 void QGameBoard::notify()
 {
-    if (game->isGameOver())
-        gameOverWindow.show();
-
-    if (game->won())
-        score->setText(QString("You hit 2048, congratulations! Keep playing to increase your score.\t\t SCORE: %1").arg(game->getScore()));
-    else
+    if (game->isGameOver()) {
+        const QScreen * screen = qApp->primaryScreen();
+        gameOverWindow.setGeometry(QRect(QPoint(0,0), screen->geometry().size()));
+        gameOverWindow.showFullScreen();
+    }
+    if (game->won()) {
+        score->setText(QString("You win! | SCORE: %1").arg(game->getScore()));
+    }
+    else {
         score->setText(QString("SCORE: %1").arg(game->getScore()));
+    }
 
     drawBoard();
 }

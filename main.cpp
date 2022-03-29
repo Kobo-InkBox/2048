@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     QGameBoard board;
     QApplication::setFont(QFont("u001"));
     const QScreen * screen = qApp->primaryScreen();
-    board.setGeometry(QRect(QPoint(0,0), screen->geometry ().size()));
+    board.setGeometry(QRect(QPoint(0,0), screen->geometry().size()));
     board.show();
 
     QApplication::setStyle("windows");

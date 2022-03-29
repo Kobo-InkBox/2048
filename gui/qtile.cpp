@@ -22,7 +22,7 @@ void QTile::draw()
             break;
         }
         case 4: {
-            setStyleSheet("QTile { background: rgb(237,224,200); color: rgb(0,0,0); font: bold; border-radius: 10px; font: 40pt; }");
+            setStyleSheet("QTile { background: rgb(209, 182, 134); color: rgb(0,0,0); font: bold; border-radius: 10px; font: 40pt; }");
             break;
         }
         case 8: {
