@@ -35,11 +35,10 @@ private:
     QGridLayout *boardLayout;
     // score widget
     QLabel *score;
-    // game over widget
-    QGameOverWindow gameOverWindow;
     // winner widget
     QLabel *youwin;
     void drawBoard();
+    QGameOverWindow * gameOverWindow;
 
 private slots:
     void moveLeft();

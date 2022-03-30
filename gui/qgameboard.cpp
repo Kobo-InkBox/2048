@@ -95,8 +95,6 @@ QGameBoard::QGameBoard(QWidget *parent) :
 
     // style sheet of the board
     setStyleSheet("QGameBoard { background-color: rgb(187,173,160) }");
-
-    connect(gameOverWindow.getResetBtn(), SIGNAL(clicked()), this, SLOT(resetGame()));
 }
 
 void QGameBoard::keyPressEvent(QKeyEvent *event)
@@ -120,9 +118,11 @@ void QGameBoard::keyPressEvent(QKeyEvent *event)
 void QGameBoard::notify()
 {
     if (game->isGameOver()) {
+        gameOverWindow = new QGameOverWindow(0, game->getScore());
+        connect(gameOverWindow->getResetBtn(), SIGNAL(clicked()), this, SLOT(resetGame()));
         const QScreen * screen = qApp->primaryScreen();
-        gameOverWindow.setGeometry(QRect(QPoint(0,0), screen->geometry().size()));
-        gameOverWindow.showFullScreen();
+        gameOverWindow->setGeometry(QRect(QPoint(0,0), screen->geometry().size()));
+        gameOverWindow->showFullScreen();
     }
     if (game->won()) {
         score->setText(QString("You win! | SCORE: %1").arg(game->getScore()));
@@ -155,7 +155,7 @@ void QGameBoard::resetGame()
     game->restart();
     drawBoard();
     score->setText(QString("SCORE: %1").arg(game->getScore()));
-    gameOverWindow.hide();
+    gameOverWindow->hide();
 }
 
 void QGameBoard::moveLeft() {

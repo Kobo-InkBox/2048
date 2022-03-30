@@ -9,7 +9,7 @@ class QGameOverWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit QGameOverWindow(QWidget *parent = 0);
+    explicit QGameOverWindow(QWidget *parent = 0, int score = 0);
 
     QResetButton* getResetBtn() const;
 
@@ -18,7 +18,7 @@ signals:
 public slots:
 
 private:
-    QResetButton* reset;
+    QResetButton * reset;
 
 };
 
